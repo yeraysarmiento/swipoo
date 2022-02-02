@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Form from "./components/Form/Form";
 import Header from "./components/Header/Header";
+import dateFormat from "dateformat";
 
 function App() {
   const initialData = {
@@ -12,6 +13,7 @@ function App() {
 
   useEffect(() => {
     if (data.brand !== "" && data.fuel !== "" && data.enrollmentDate !== "") {
+      data.enrollmentDate = dateFormat(data.EnrollmentDate, "yyyy/mm/dd");
       console.log(data);
     }
   });
