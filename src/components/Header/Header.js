@@ -1,8 +1,9 @@
 import logo from "../../img/logo-swipoo.svg";
+import "./Header.css";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="navigator">
       <h1 className="heading">
         <img
           className="heading__image"
@@ -11,11 +12,11 @@ function Header() {
           width="100"
         />
       </h1>
-      <ul className="menu">
-        <li className="menu__element"></li>
-        <li className="menu__element"></li>
-        <li className="menu__element"></li>
-      </ul>
+      <div className="menu">
+        <div className="menu__element"></div>
+        <div className="menu__element"></div>
+        <div className="menu__element"></div>
+      </div>
     </header>
   );
 }
