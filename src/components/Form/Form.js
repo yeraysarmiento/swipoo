@@ -66,25 +66,28 @@ function Form({ onChange }) {
   ];
 
   return (
-    <form className="form" noValidate autoComplete="off">
-      <select id="brand" defaultValue="default" onChange={onChange}>
-        <option value="default" disabled>
-          Marca
-        </option>
-        {brands.map((brand) => (
-          <option key={brand}>{brand}</option>
-        ))}
-      </select>
-      <select id="fuel" defaultValue="default" onChange={onChange}>
-        <option value="default" disabled>
-          Combustible
-        </option>
-        {fuelTypes.map((fuel) => (
-          <option key={fuel}>{fuel}</option>
-        ))}
-      </select>
-      <input type="date" id="enrollmentDate" onChange={onChange} />
-    </form>
+    <>
+      <h2 className="form-title">Encuentra tu vehículo</h2>
+      <form className="form" noValidate autoComplete="off">
+        <select id="brand" defaultValue="default" onChange={onChange}>
+          <option value="default" disabled>
+            Marca
+          </option>
+          {brands.map((brand) => (
+            <option key={brand}>{brand}</option>
+          ))}
+        </select>
+        <select id="fuel" defaultValue="default" onChange={onChange}>
+          <option value="default" disabled>
+            Combustible
+          </option>
+          {fuelTypes.map((fuel) => (
+            <option key={fuel}>{fuel}</option>
+          ))}
+        </select>
+        <input type="date" id="enrollmentDate" onChange={onChange} />
+      </form>
+    </>
   );
 }
 
