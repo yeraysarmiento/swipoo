@@ -5,6 +5,7 @@ describe("Given a Car component", () => {
   describe("When it is called with a car object", () => {
     test("Then it should render a <heading> with the brand and model", () => {
       const car = {
+        age: 2,
         brand: "Alfa Romeo",
         model: "Stelvio 2.9 Gasolina 375kW (510CV) Quadrifogl Q4",
         period: "2020-",
@@ -15,6 +16,8 @@ describe("Given a Car component", () => {
         cvf: "19,54",
         cv: "510",
         value: "88700",
+        venalValue: 89888,
+        deprecationValues: [],
       };
 
       render(<Car car={car} />);
