@@ -1,0 +1,26 @@
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  background-color: #e6e6e6;
+  padding-bottom: 100px;
+}
+
+.list__info {
+  margin: 50px 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.car {
+  background-color: white;
+}
+
+.car__title-feature {
+  font-weight: bold;
+}
+
+.car__info-feature {
+  color: #888888;
+}
