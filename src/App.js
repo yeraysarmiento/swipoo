@@ -652,7 +652,7 @@ function App() {
       <Header />
       <Form onChange={onChange} />
       <CarsList cars={carsList} />
-      <footer className="footer"></footer>
+      <footer className="footer">Swipoo Challenge</footer>
     </div>
   );
 }

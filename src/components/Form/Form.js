@@ -66,7 +66,7 @@ function Form({ onChange }) {
   ];
 
   return (
-    <>
+    <section className="form-box">
       <h2 className="form-title">Encuentra tu vehículo</h2>
       <form className="form" noValidate autoComplete="off">
         <select
@@ -97,7 +97,7 @@ function Form({ onChange }) {
         <label htmlFor="enrollmentDate">Enrollment Date</label>
         <input type="date" id="enrollmentDate" onChange={onChange} />
       </form>
-    </>
+    </section>
   );
 }
 
