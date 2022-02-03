@@ -2,34 +2,21 @@ import { useEffect, useState } from "react";
 import Car from "../Car/Car";
 import "./CarsList.css";
 
-function CarsList({ cars }) {
+function CarsList({ cars, onFilter }) {
   const modelOptions = cars.map((car) => car.model);
   const filteredModelOptions = [...new Set(modelOptions)];
-
-  const [carsList, setCarsList] = useState(cars);
   const [foundMessage, setFoundMessage] = useState("");
 
-  const onChange = (event) => {
-    const selectedModel = event.target.value;
-
-    if (selectedModel === "Todos los modelos") {
-      setCarsList([...cars]);
-    } else {
-      setCarsList([...cars.filter((car) => car.model === selectedModel)]);
-    }
-
-    console.log(carsList.length);
-  };
-
   useEffect(() => {
+    console.log(3, cars);
     setFoundMessage(
-      carsList.length > 1
-        ? `Hay un total de ${carsList.length} vehículos`
-        : carsList.length < 1
+      cars.length > 1
+        ? `Hay un total de ${cars.length} vehículos`
+        : cars.length < 1
         ? "No se ha encontrado ningún vehículo"
         : "Se ha encontrado 1 vehículo:"
     );
-  }, [carsList]);
+  }, [cars]);
 
   return (
     <section className="list-container">
@@ -39,7 +26,7 @@ function CarsList({ cars }) {
             <select
               id="model"
               defaultValue="default"
-              onChange={onChange}
+              onChange={onFilter}
               data-testid="model"
             >
               <option value="default" disabled>
@@ -55,7 +42,7 @@ function CarsList({ cars }) {
           </form>
           <h3 className="list__info">{foundMessage}</h3>
           <ul className="list">
-            {carsList.map((car) => (
+            {cars.map((car) => (
               <Car car={car} key={car.model} />
             ))}
           </ul>
