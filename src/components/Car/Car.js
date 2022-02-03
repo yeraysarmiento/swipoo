@@ -33,6 +33,7 @@ function Car({ car }) {
           </tr>
         </tbody>
       </table>
+      <h4 className="car__value-title">Valoración venal</h4>
       <table className="car__value">
         <tbody>
           <tr>

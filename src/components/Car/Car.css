@@ -52,3 +52,17 @@
   font-size: 14px;
   color: #888888;
 }
+
+.car__value-title {
+  margin-top: 25px;
+  background-color: #464c5598;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+.car__value {
+  padding: 15px;
+  font-size: 14px;
+}
