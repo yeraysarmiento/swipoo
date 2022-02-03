@@ -12,7 +12,7 @@ function App() {
   };
   const [data, setData] = useState(initialData);
 
-  const carsList = [
+  let carsList = [
     {
       brand: "Alfa Romeo",
       model: "Stelvio 2.9 Gasolina 375kW (510CV) Quadrifogl Q4",
@@ -555,10 +555,88 @@ function App() {
     },
   ];
 
+  const getDeprecationValues = (car) => {
+    let deprecationValues = [];
+    let deprecatedValue;
+    const carAge = car.age;
+    const venalValue = car.venalValue;
+
+    for (let i = 0, index = 0.1; i < carAge + 1; i++, index += 0.1) {
+      deprecatedValue = venalValue * (1 - index);
+      deprecationValues.push(Math.trunc(deprecatedValue));
+    }
+
+    return { ...car, deprecationValues };
+  };
+
+  const getVenalValue = (car) => {
+    let venalValue;
+
+    const date = new Date();
+    const actualYear = date.getFullYear();
+    const enrollmentValue = +car.value;
+    const enrollmentDate = car.period.includes("--")
+      ? +car.period.replace("--", "")
+      : +car.period.replace("-", "");
+    const carAge = actualYear - enrollmentDate;
+
+    switch (true) {
+      case carAge <= 1:
+        venalValue = enrollmentValue;
+        break;
+      case carAge <= 2:
+        venalValue = enrollmentValue * 0.84;
+        break;
+      case carAge <= 3:
+        venalValue = enrollmentValue * 0.67;
+        break;
+      case carAge <= 4:
+        venalValue = enrollmentValue * 0.56;
+        break;
+      case carAge <= 5:
+        venalValue = enrollmentValue * 0.57;
+        break;
+      case carAge <= 6:
+        venalValue = enrollmentValue * 0.39;
+        break;
+      case carAge <= 7:
+        venalValue = enrollmentValue * 0.34;
+        break;
+      case carAge <= 8:
+        venalValue = enrollmentValue * 0.28;
+        break;
+      case carAge <= 9:
+        venalValue = enrollmentValue * 0.24;
+        break;
+      case carAge <= 11:
+        venalValue = enrollmentValue * 0.17;
+        break;
+      case carAge <= 12:
+        venalValue = enrollmentValue * 0.13;
+        break;
+      case carAge > 12:
+        venalValue = enrollmentValue * 0.1;
+        break;
+      default:
+        venalValue = enrollmentValue;
+        break;
+    }
+
+    return { ...car, venalValue: Math.trunc(venalValue), age: carAge };
+  };
+
+  const getCarsValue = (car) => {
+    let updatedCar;
+    updatedCar = getVenalValue(car);
+    updatedCar = getDeprecationValues(updatedCar);
+    return updatedCar;
+  };
+
+  carsList = [...carsList.map((car) => getCarsValue(car))];
+
   useEffect(() => {
     if (data.brand !== "" && data.fuel !== "" && data.enrollmentDate !== "") {
       data.enrollmentDate = dateFormat(data.EnrollmentDate, "yyyy/mm/dd");
-      console.log(data);
     }
   });
 
