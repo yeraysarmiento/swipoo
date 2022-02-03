@@ -1,6 +1,9 @@
 import { useCallback, useContext } from "react";
 import CarsContext from "../store/contexts/CarsContext";
-import { loadCarsAction } from "../store/actions/actionCreators";
+import {
+  filterCarsAction,
+  loadCarsAction,
+} from "../store/actions/actionCreators";
 import axios from "axios";
 
 const useCars = () => {
@@ -102,9 +105,14 @@ const useCars = () => {
     [dispatch, getCarsValue]
   );
 
+  const filterCars = (filter) => {
+    dispatch(filterCarsAction(filter));
+  };
+
   return {
     cars,
     loadCars,
+    filterCars,
   };
 };
 
