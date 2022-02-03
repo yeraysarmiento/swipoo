@@ -20,6 +20,7 @@ ul {
   padding: 30px;
   text-align: center;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  background-color: white;
 }
