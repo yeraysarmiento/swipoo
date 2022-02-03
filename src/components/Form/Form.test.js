@@ -2,9 +2,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import Form from "./Form";
 
 describe("Given a Form component", () => {
-  describe("When it is invoked with an onChange function", () => {
+  describe("When it is invoked with an onFetch function", () => {
     test("Then it should render three <select> tag and a <heading> with 'Encuentra tu vehículo' on it", () => {
-      render(<Form onChange={() => {}} />);
+      render(<Form onFetch={() => {}} />);
 
       const heading = screen.getByRole("heading", {
         name: /encuentra tu vehículo/i,
@@ -15,17 +15,35 @@ describe("Given a Form component", () => {
       expect(selects).toHaveLength(2);
     });
 
-    describe("And the user types a selection", () => {
-      test("Then the function onChange should be called", () => {
-        const onChange = jest.fn();
+    test("Then the button should be disabled", () => {
+      render(<Form onFetch={() => {}} />);
 
-        render(<Form onChange={onChange} />);
+      const button = screen.getByRole("button");
+
+      expect(button).toBeDisabled();
+    });
+
+    describe("And when the user fills all inputs and clicks on submit", () => {
+      test("Then the function onFetch should be called", () => {
+        const onFetch = jest.fn();
+
+        render(<Form onFetch={onFetch} />);
         const selectBrand = screen.getByTestId("brand");
+        const selectFuel = screen.getByTestId("fuel");
+        const enrollmentDate = screen.getByLabelText("Fecha de matriculación:");
+        const form = screen.getByLabelText("form");
+
         fireEvent.change(selectBrand, {
           target: { value: "Seat" },
         });
+        fireEvent.change(selectFuel, {
+          target: { value: "Gasolina" },
+        });
+        fireEvent.focus(enrollmentDate);
+        fireEvent.change(enrollmentDate, { target: { value: "2000-01-01" } });
+        fireEvent.submit(form);
 
-        expect(onChange).toHaveBeenCalled();
+        expect(onFetch).toHaveBeenCalled();
       });
     });
   });
