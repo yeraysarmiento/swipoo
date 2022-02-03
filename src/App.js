@@ -8,6 +8,7 @@ import useCars from "./hooks/useCars";
 function App() {
   const { cars, loadCars, filterCars } = useCars();
   const [url, setUrl] = useState("");
+  const [isMessage, setIsMessage] = useState(false);
 
   const onFilter = (value) => {
     if (value === "Todos los modelos") {
@@ -30,8 +31,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Form onFetch={onFetch} />
-      <CarsList cars={cars} onFilter={onFilter} />
+      <Form onFetch={onFetch} setMessage={setIsMessage} />
+      <CarsList cars={cars} onFilter={onFilter} isMessage={isMessage} />
       <footer className="footer">Swipoo Challenge</footer>
     </div>
   );

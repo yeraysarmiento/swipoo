@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import "./Form.css";
 
-function Form({ onFetch }) {
+function Form({ onFetch, setMessage }) {
   const initialData = {
     brand: "",
     fuel: "",
@@ -84,6 +84,7 @@ function Form({ onFetch }) {
   const onSubmit = (event) => {
     event.preventDefault();
     onFetch(data);
+    setMessage(true);
   };
 
   useEffect(() => {
