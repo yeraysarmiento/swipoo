@@ -4,7 +4,7 @@ import Form from "./Form";
 describe("Given a Form component", () => {
   describe("When it is invoked with an onFetch function", () => {
     test("Then it should render three <select> tag and a <heading> with 'Encuentra tu vehículo' on it", () => {
-      render(<Form onFetch={() => {}} />);
+      render(<Form onFetch={() => {}} setMessage={() => {}} />);
 
       const heading = screen.getByRole("heading", {
         name: /encuentra tu vehículo/i,
@@ -16,7 +16,7 @@ describe("Given a Form component", () => {
     });
 
     test("Then the button should be disabled", () => {
-      render(<Form onFetch={() => {}} />);
+      render(<Form onFetch={() => {}} setMessage={() => {}} />);
 
       const button = screen.getByRole("button");
 
@@ -27,7 +27,7 @@ describe("Given a Form component", () => {
       test("Then the function onFetch should be called", () => {
         const onFetch = jest.fn();
 
-        render(<Form onFetch={onFetch} />);
+        render(<Form onFetch={onFetch} setMessage={() => {}} />);
         const selectBrand = screen.getByTestId("brand");
         const selectFuel = screen.getByTestId("fuel");
         const enrollmentDate = screen.getByLabelText("Fecha de matriculación:");

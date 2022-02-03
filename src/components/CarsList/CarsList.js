@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Car from "../Car/Car";
 import "./CarsList.css";
 
-function CarsList({ cars, onFilter }) {
+function CarsList({ cars, onFilter, isMessage }) {
   const modelOptions = cars.map((car) => car.model);
   const filteredModelOptions = [...new Set(modelOptions)];
   const [foundMessage, setFoundMessage] = useState("");
@@ -39,7 +39,7 @@ function CarsList({ cars, onFilter }) {
           </select>
         </form>
       )}
-      <h3 className="list__info">{foundMessage}</h3>
+      {isMessage && <h3 className="list__info">{foundMessage}</h3>}
       <ul className="list">
         {cars.map((car) => (
           <Car car={car} key={car.model} />
