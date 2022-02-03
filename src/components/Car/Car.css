@@ -1,0 +1,54 @@
+.car {
+  background-color: white;
+  width: 400px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  color: #2c2b2b;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.car:hover {
+  border: 1px solid #2a78f5;
+}
+
+.car__brand {
+  background-color: #2a78f5;
+  padding: 15px;
+  text-align: center;
+  color: white;
+}
+
+.car__model {
+  padding: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.car__features {
+  margin-bottom: 15px;
+  padding: 0 15px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.car__features tr {
+  border-top: 1px solid #2c2b2b;
+  border-bottom: 1px solid #2c2b2b;
+}
+
+.car__features td {
+  padding: 5px 15px;
+}
+
+.car__title-feature {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.car__info-feature {
+  font-size: 14px;
+  color: #888888;
+}

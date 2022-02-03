@@ -12,15 +12,3 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-
-.car {
-  background-color: white;
-}
-
-.car__title-feature {
-  font-weight: bold;
-}
-
-.car__info-feature {
-  color: #888888;
-}
