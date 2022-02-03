@@ -33,30 +33,34 @@ function CarsList({ cars }) {
 
   return (
     <section className="list-container">
-      <form className="form" noValidate autoComplete="off">
-        <select
-          id="model"
-          defaultValue="default"
-          onChange={onChange}
-          data-testid="model"
-        >
-          <option value="default" disabled>
-            Modelo
-          </option>
-          <option value="Todos los modelos">Todos los modelos</option>
-          {filteredModelOptions.map((model) => (
-            <option key={model} value={model}>
-              {model}
-            </option>
-          ))}
-        </select>
-      </form>
-      <h3 className="list__info">{foundMessage}</h3>
-      <ul className="list">
-        {carsList.map((car) => (
-          <Car car={car} key={car.model} />
-        ))}
-      </ul>
+      {cars.length !== 0 && (
+        <>
+          <form className="form" noValidate autoComplete="off">
+            <select
+              id="model"
+              defaultValue="default"
+              onChange={onChange}
+              data-testid="model"
+            >
+              <option value="default" disabled>
+                Modelo
+              </option>
+              <option value="Todos los modelos">Todos los modelos</option>
+              {filteredModelOptions.map((model) => (
+                <option key={model} value={model}>
+                  {model}
+                </option>
+              ))}
+            </select>
+          </form>
+          <h3 className="list__info">{foundMessage}</h3>
+          <ul className="list">
+            {carsList.map((car) => (
+              <Car car={car} key={car.model} />
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 }

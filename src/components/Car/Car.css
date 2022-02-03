@@ -63,6 +63,17 @@
 }
 
 .car__value {
-  padding: 15px;
+  margin: 15px 0 15px 0;
   font-size: 14px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.car__deprecation-box {
+  height: 30px;
+}
+
+.car__value tr:nth-child(1) {
+  font-style: italic;
+  color: darkgrey;
 }

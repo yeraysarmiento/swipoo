@@ -38,10 +38,19 @@ function Car({ car }) {
         <tbody>
           <tr>
             <td className="car__title-value">
-              Valoración según Hacienda (BOE-A-2017-15284):
+              Valoración según Hacienda <br />
+              (BOE-A-2017-15284)
             </td>
-            <td className="car__info-value">XX</td>
+            <td className="car__venal-value">{car.venalValue}€</td>
           </tr>
+          {car.deprecationValues.map((value, index) => (
+            <tr className="car__deprecation-box" key={index}>
+              <td className="car__deprecation-title">
+                {90 - 10 * index}% del valor venal
+              </td>
+              <td className="car__deprecation-value">{value}€</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </li>
