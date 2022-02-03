@@ -20,33 +20,31 @@ function CarsList({ cars, onFilter }) {
   return (
     <section className="list-container">
       {cars.length !== 0 && (
-        <>
-          <form className="form" noValidate autoComplete="off">
-            <select
-              id="model"
-              defaultValue="default"
-              onChange={onFilter}
-              data-testid="model"
-            >
-              <option value="default" disabled>
-                Modelo
+        <form className="form" noValidate autoComplete="off">
+          <select
+            id="model"
+            defaultValue="default"
+            onChange={(event) => onFilter(event.target.value)}
+            data-testid="model"
+          >
+            <option value="default" disabled>
+              Modelo
+            </option>
+            <option value="Todos los modelos">Todos los modelos</option>
+            {filteredModelOptions.map((model) => (
+              <option key={model} value={model}>
+                {model}
               </option>
-              <option value="Todos los modelos">Todos los modelos</option>
-              {filteredModelOptions.map((model) => (
-                <option key={model} value={model}>
-                  {model}
-                </option>
-              ))}
-            </select>
-          </form>
-          <h3 className="list__info">{foundMessage}</h3>
-          <ul className="list">
-            {cars.map((car) => (
-              <Car car={car} key={car.model} />
             ))}
-          </ul>
-        </>
+          </select>
+        </form>
       )}
+      <h3 className="list__info">{foundMessage}</h3>
+      <ul className="list">
+        {cars.map((car) => (
+          <Car car={car} key={car.model} />
+        ))}
+      </ul>
     </section>
   );
 }
