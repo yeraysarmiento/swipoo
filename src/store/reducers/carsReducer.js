@@ -7,6 +7,9 @@ const carsReducer = (cars, action) => {
     case actionTypes.loadCars:
       newCars = action.cars;
       break;
+    case actionTypes.filterCars:
+      newCars = [...cars.filter((car) => car.model === action.filter)];
+      break;
     default:
       newCars = cars;
       break;

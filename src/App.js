@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Form from "./components/Form/Form";
 import Header from "./components/Header/Header";
 import dateFormat from "dateformat";
@@ -6,45 +6,31 @@ import CarsList from "./components/CarsList/CarsList";
 import useCars from "./hooks/useCars";
 
 function App() {
-  const initialData = {
-    brand: "",
-    fuel: "",
-    enrollmentDate: "",
-  };
-  const [data, setData] = useState(initialData);
-  const { cars, loadCars } = useCars();
+  const { cars, loadCars, filterCars } = useCars();
+  const [url, setUrl] = useState("");
 
-  const onFilter = (event) => {
-    // console.log(1, event);
-    // const selectedModel = event.target.value;
-    // if (selectedModel === "Todos los modelos") {
-    //   setCarsList([...cars]);
-    // } else {
-    //   setCarsList([...cars.filter((car) => car.model === selectedModel)]);
-    // }
-  };
-
-  useEffect(() => {
-    const { brand, fuel, enrollmentDate } = data;
-    if (brand !== "" && fuel !== "" && enrollmentDate !== "") {
-      const updatedEnrollmentDate = dateFormat(enrollmentDate, "yyyy/mm/dd");
-      loadCars(
-        `https://api-sandbox.swipoo.com/itp/cars?brand=${brand}&enrollmentDate=${updatedEnrollmentDate}&fuel=${fuel}`
-      );
+  const onFilter = (value) => {
+    if (value === "Todos los modelos") {
+      loadCars(url);
+    } else {
+      filterCars(value);
     }
-  }, [data, loadCars]);
+  };
 
-  const onChange = (event) => {
-    setData({
-      ...data,
-      [event.target.id]: event.target.value,
-    });
+  const onFetch = (data) => {
+    const { brand, fuel, enrollmentDate } = data;
+
+    const updatedEnrollmentDate = dateFormat(enrollmentDate, "yyyy/mm/dd");
+
+    const url = `https://api-sandbox.swipoo.com/itp/cars?brand=${brand}&enrollmentDate=${updatedEnrollmentDate}&fuel=${fuel}`;
+    setUrl(url);
+    loadCars(url);
   };
 
   return (
     <div className="App">
       <Header />
-      <Form onChange={onChange} />
+      <Form onFetch={onFetch} />
       <CarsList cars={cars} onFilter={onFilter} />
       <footer className="footer">Swipoo Challenge</footer>
     </div>
