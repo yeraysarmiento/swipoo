@@ -69,7 +69,12 @@ function Form({ onChange }) {
     <>
       <h2 className="form-title">Encuentra tu vehículo</h2>
       <form className="form" noValidate autoComplete="off">
-        <select id="brand" defaultValue="default" onChange={onChange}>
+        <select
+          id="brand"
+          defaultValue="default"
+          onChange={onChange}
+          data-testid="brand"
+        >
           <option value="default" disabled>
             Marca
           </option>
