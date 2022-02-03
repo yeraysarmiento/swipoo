@@ -41,8 +41,8 @@ function CarsList({ cars, onFilter, isMessage }) {
       )}
       {isMessage && <h3 className="list__info">{foundMessage}</h3>}
       <ul className="list">
-        {cars.map((car) => (
-          <Car car={car} key={car.model} />
+        {cars.map((car, index) => (
+          <Car car={car} key={index} />
         ))}
       </ul>
     </section>
