@@ -57,12 +57,12 @@ function Form({ onChange }) {
   ];
 
   const fuelTypes = [
-    "Diesel",
-    "Gasolina",
-    "Eléctrico",
-    "S",
-    "Diesel y Eléctrico",
-    "Gasolina y Eléctrico",
+    { fuelAbreviation: "D", fuelName: "Diesel" },
+    { fuelAbreviation: "G", fuelName: "Gasolina" },
+    { fuelAbreviation: "Elc", fuelName: "Eléctrico" },
+    { fuelAbreviation: "S", fuelName: "S" },
+    { fuelAbreviation: "DyE", fuelName: "Diesel y Eléctrico" },
+    { fuelAbreviation: "GyE", fuelName: "Gasolina y Eléctrico" },
   ];
 
   return (
@@ -74,7 +74,9 @@ function Form({ onChange }) {
             Marca
           </option>
           {brands.map((brand) => (
-            <option key={brand}>{brand}</option>
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
           ))}
         </select>
         <select id="fuel" defaultValue="default" onChange={onChange}>
@@ -82,9 +84,12 @@ function Form({ onChange }) {
             Combustible
           </option>
           {fuelTypes.map((fuel) => (
-            <option key={fuel}>{fuel}</option>
+            <option key={fuel.fuelAbreviation} value={fuel.fuelAbreviation}>
+              {fuel.fuelName}
+            </option>
           ))}
         </select>
+        <label htmlFor="enrollmentDate">Enrollment Date</label>
         <input type="date" id="enrollmentDate" onChange={onChange} />
       </form>
     </>
