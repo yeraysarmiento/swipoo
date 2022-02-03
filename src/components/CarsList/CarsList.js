@@ -8,7 +8,6 @@ function CarsList({ cars, onFilter }) {
   const [foundMessage, setFoundMessage] = useState("");
 
   useEffect(() => {
-    console.log(3, cars);
     setFoundMessage(
       cars.length > 1
         ? `Hay un total de ${cars.length} vehículos`

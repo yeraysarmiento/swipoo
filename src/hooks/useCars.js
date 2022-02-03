@@ -15,6 +15,9 @@ const useCars = () => {
     for (let i = 0, index = 0.1; i < carAge + 1; i++, index += 0.1) {
       deprecatedValue = venalValue * (1 - index);
       deprecationValues.push(Math.trunc(deprecatedValue));
+      if (deprecationValues.length > 8) {
+        break;
+      }
     }
 
     return { ...car, deprecationValues };

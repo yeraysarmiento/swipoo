@@ -15,7 +15,6 @@ function App() {
   const { cars, loadCars } = useCars();
 
   const onFilter = (event) => {
-    console.log(event);
     // console.log(1, event);
     // const selectedModel = event.target.value;
     // if (selectedModel === "Todos los modelos") {
