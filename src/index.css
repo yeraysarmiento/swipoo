@@ -15,3 +15,8 @@ body {
 ul {
   list-style: none;
 }
+
+.footer {
+  padding: 30px;
+  text-align: center;
+}
