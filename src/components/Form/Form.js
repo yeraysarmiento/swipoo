@@ -142,7 +142,7 @@ function Form({ onFetch, setMessage }) {
           aria-label="enrollmentDate"
         />
         <button className={isDisabled ? "disabled" : ""} disabled={isDisabled}>
-          Submit
+          Buscar
         </button>
       </form>
     </section>
