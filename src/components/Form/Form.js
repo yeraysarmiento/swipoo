@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import "./Form.css";
+import { brands, fuelTypes } from "../../assets/swipooData";
 
 function Form({ onFetch, setMessage }) {
   const initialData = {
@@ -9,70 +10,6 @@ function Form({ onFetch, setMessage }) {
   };
   const [data, setData] = useState(initialData);
   const [isDisabled, setIsDisabled] = useState(true);
-
-  const brands = [
-    "Abarth",
-    "Alfa Romeo",
-    "Aston Martin",
-    "Audi",
-    "Bentley",
-    "BMW",
-    "Bugatti",
-    "Cadillac",
-    "Chevrolet",
-    "Citroen",
-    "Cupra",
-    "Dacia",
-    "DS",
-    "Ferrari",
-    "Fiat",
-    "Ford",
-    "Honda",
-    "Hyundai",
-    "Infiniti",
-    "Isuzu",
-    "Iveco",
-    "Jaguar",
-    "Jeep",
-    "Kia",
-    "Lamborghini",
-    "Lancia",
-    "Land Rover",
-    "Lexus",
-    "Lotus",
-    "Maserati",
-    "Mazda",
-    "Mercedes",
-    "Mini",
-    "Mitsubishi",
-    "Nissan",
-    "Opel",
-    "Peugeot",
-    "Piaggio",
-    "Porsche",
-    "Renault",
-    "Rolls-Royce",
-    "Seat",
-    "Skoda",
-    "Smart",
-    "SsangYong",
-    "Subaru",
-    "Suzuki",
-    "Tata",
-    "Tesla",
-    "Toyota",
-    "Volkswagen",
-    "Volvo",
-  ];
-
-  const fuelTypes = [
-    { fuelAbreviation: "D", fuelName: "Diesel" },
-    { fuelAbreviation: "G", fuelName: "Gasolina" },
-    { fuelAbreviation: "Elc", fuelName: "Eléctrico" },
-    { fuelAbreviation: "S", fuelName: "S" },
-    { fuelAbreviation: "DyE", fuelName: "Diesel y Eléctrico" },
-    { fuelAbreviation: "GyE", fuelName: "Gasolina y Eléctrico" },
-  ];
 
   const onChange = (event) => {
     setData({
